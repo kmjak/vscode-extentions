@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "share-extensions.kazuya",
-        "title": "kazuya"
+        "command": "share-extensions.send-extensions",
+        "title": "send extensions"
       }
     ]
   },

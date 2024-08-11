@@ -1,17 +1,26 @@
 import * as vscode from 'vscode';
 import axios from 'axios';
 
-export function activate(context: vscode.ExtensionContext) {
-  const disposable = vscode.commands.registerCommand('share-extensions.kazuya', async () => {
-    const extensionsData = vscode.extensions.all.map((extension) => extension.id);
+interface sendExtensions {
+  user_id: string;
+  extensions: string[];
+}
 
+export function activate(context: vscode.ExtensionContext) {
+  const disposable = vscode.commands.registerCommand('share-extensions.send-extensions', async () => {
+    const user_id = '12345';
+    const extensionsData = vscode.extensions.all.map((extension) => extension.id);
+    const data: sendExtensions = { user_id, extensions: extensionsData };
     try {
-      await axios.post('http://localhost:3000/', { extensions: extensionsData });
-      vscode.window.showInformationMessage('Extensions data sent to server');
+      const response = await axios.post('http://localhost:3001/extensions', data);
+      vscode.window.showInformationMessage('Extensions sent successfully!');
     } catch (error) {
-      vscode.window.showErrorMessage('Failed to send extensions data : ' + error);
+      vscode.window.showErrorMessage('Failed to send extensions:');
     }
-  });
+
+  }
+  );
+  
 
   context.subscriptions.push(disposable);
 }
