@@ -1,7 +1,7 @@
 {
-  "name": "share-extensions",
-  "displayName": "Share-Extensions",
-  "description": "Share extensions with your friends",
+  "name": "next-create-project",
+  "displayName": "nex-create-project",
+  "description": "This is a sample project for creating a new project",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.92.0"
@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "share-extensions.send-extensions",
-        "title": "send extensions"
+        "command": "nex-create-project.createProject",
+        "title": "Next create"
       }
     ]
   },
